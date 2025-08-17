@@ -11,3 +11,10 @@ Resources:
       GenerateSecretString:
         PasswordLength: 12
         ExcludeCharacters: "\"@/\\' "
+
+  S3Group:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: S3Group
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
