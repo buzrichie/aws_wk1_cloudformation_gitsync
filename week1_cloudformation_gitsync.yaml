@@ -9,6 +9,8 @@ Resources:
       Name: OneTimeIAMPassword
       Description: Auto-generated one-time password for IAM Users
       GenerateSecretString:
+        SecretStringTemplate: '{"username": "temp-user"}'
+        GenerateStringKey: "password"
         PasswordLength: 12
         ExcludeCharacters: "\"@/\\' "
 
