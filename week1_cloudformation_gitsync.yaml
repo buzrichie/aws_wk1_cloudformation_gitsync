@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  CloudFormation template to automate IAM resource creation:
+
+Resources:
+  OneTimePasswordSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: OneTimeIAMPassword
+      Description: Auto-generated one-time password for IAM Users
+      GenerateSecretString:
+        PasswordLength: 12
+        ExcludeCharacters: "\"@/\\' "
