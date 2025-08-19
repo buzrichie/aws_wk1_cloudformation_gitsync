@@ -71,3 +71,14 @@ Resources:
         PasswordResetRequired: true
       Groups:
         - !Ref EC2Group
+
+  EC2User:
+    Type: AWS::IAM::User
+    DependsOn: OneTimePasswordSecret
+    Properties:
+      UserName: ec2-user-wk1-rich-review
+      LoginProfile:
+        Password: !Sub "{{resolve:secretsmanager:${OneTimePasswordSecret}::password}}"
+        PasswordResetRequired: true
+      Groups:
+        - !Ref EC2Group
